@@ -664,15 +664,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1219568354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94bcb05eb26475440ac424b4e3d58ffc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8602b9b8c6767514fa023b8ea1036a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attChace: 1
-  defChace: 2
-  moveChace: 1
-  Units: []
-  dirUnits: []
-  units: []
+  proUnits:
+  - {fileID: 451833187}
+  - {fileID: 917076697}
+  - {fileID: 2036394103}
+  - {fileID: 0}
+  behUnits:
+  - {fileID: 1199996966}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  prontUnits: []
+  behindUnits: []
 --- !u!224 &1219568356
 RectTransform:
   m_ObjectHideFlags: 0
