@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitState : MonoBehaviour
+public class UnitState111 : MonoBehaviour
 {
     public string unitName;
     public int maxhp = 10;

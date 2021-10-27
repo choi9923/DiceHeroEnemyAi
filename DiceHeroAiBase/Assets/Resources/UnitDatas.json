@@ -1,0 +1,102 @@
+[
+  {
+
+  },
+  {
+    "ID": 1,
+    "Name": "김기사",
+    "HP": 30,
+    "AD": 5,
+    "DF": 2,
+    "rankType": "frontRank"
+  },
+  {
+    "ID": 2,
+    "Name": "테로핀",
+    "HP": 40,
+    "AD": 4,
+    "DF": 4,
+    "rankType": "frontRank"
+  },
+  {
+    "ID": 3,
+    "Name": "mr계란",
+    "HP": 20,
+    "AD": 4,
+    "DF": 0,
+    "rankType": "backRank"
+  },
+  {
+    "ID": 4,
+    "Name": "안델",
+    "HP": 25,
+    "AD": 4,
+    "DF": 1,
+    "rankType": "backRank"
+  },
+  {
+    "ID": 5,
+    "Name": "파이썬",
+    "HP": 30,
+    "AD": 5,
+    "DF": 2,
+    "rankType": "frontRank"
+  },
+  {
+    "ID": 6,
+    "Name": "좀비",
+    "HP": 20,
+    "AD": 5,
+    "DF": 3,
+    "rankType": "frontRank"
+  },
+  {
+    "ID": 7,
+    "Name": "스켈레톤",
+    "HP": 15,
+    "AD": 6,
+    "DF": 1,
+    "rankType": "backRank"
+  },
+  {
+    "ID": 8,
+    "Name": "골렘",
+    "HP": 30,
+    "AD": 4,
+    "DF": 4,
+    "rankType": "frontRank"
+  },
+  {
+    "ID": 9,
+    "Name": "짱큰모기",
+    "HP": 20,
+    "AD": 8,
+    "DF": 0,
+    "rankType": "backRank"
+  },
+  {
+    "ID": 10,
+    "Name": "다트고블린",
+    "HP": 20,
+    "AD": 3,
+    "DF": 0,
+    "rankType": "backRank"
+  },
+  {
+    "ID": 11,
+    "Name": "깨구리",
+    "HP": 20,
+    "AD": 10,
+    "DF": 0,
+    "rankType": "allRank"
+  },
+
+  {
+    "ID": 1001,
+    "Name": "예의바른_악어",
+    "HP": 60,
+    "AD": 8,
+    "DF": 3,
+    "rankType": "frontRank"
+  }
+]

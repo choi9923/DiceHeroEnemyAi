@@ -12,24 +12,27 @@ public class AiManager : MonoBehaviour
     public int moveChace;
     public List<GameObject> Units = new List<GameObject>();
     public List<GameObject> dirUnits = new List<GameObject>();
-    public GameObject[] units;
+    public GameObject[] StartUnits;
   
     //public GameObject[] attackUnits = new GameObject[3];
     //int num = 0;
     private void Start()
     {
-        units = GameObject.FindGameObjectsWithTag("Enemy");
+        StartUnits = GameObject.FindGameObjectsWithTag("Enemy");
 
-        foreach (GameObject unit in units)
+        foreach (GameObject unit in StartUnits)
             Units.Add(unit);
        
         
         EnemyAi();
     }
  
-    void StartAi()
+    
+    public void StartAi(GameObject[] EnemyUnits)   //여기서 상대 유닛들을 받음.
     {
-
+        foreach (GameObject unit in EnemyUnits)
+            Units.Add(unit);
+        EnemyAi();
     }
 
     void EnemyAi()
@@ -38,11 +41,12 @@ public class AiManager : MonoBehaviour
         //Debug.Log(units[1].gameObject.name);
         if (attChace > 0)
         {
-            foreach (GameObject unit in Units)
+            foreach (GameObject units in Units)
             {
+                UnitBase unit = units.GetComponent<Unit>().GetUnit();
                 //여기서 hp를 받아서 백분율을 낸다.(지금은 아직 백분율 안함)
-                double maxHp = unit.GetComponent<UnitState>().maxhp;
-                double curHp = unit.GetComponent<UnitState>().curhp;
+                int maxHp = unit.curHP;
+                int curHp = unit.HP;
 
 
                 if (curHp / maxHp * 100.0 >= 25)//체력 25% 이상.
@@ -52,7 +56,7 @@ public class AiManager : MonoBehaviour
 
                     //attackUnits[num] = unit; 
                     //num++;
-                    dirUnits.Add(unit);
+                    dirUnits.Add(units);
                 }
 
             }
@@ -66,16 +70,17 @@ public class AiManager : MonoBehaviour
         }
         else if (defChace > 0)
         {
-            foreach (GameObject unit in Units)
+            foreach (GameObject units in Units)
             {
+                UnitBase unit = units.GetComponent<Unit>().GetUnit();
                 //여기서 hp를 받아서 백분율을 낸다.(지금은 아직 백분율 안함)
-                double maxHp = unit.GetComponent<UnitState>().maxhp;
-                double curHp = unit.GetComponent<UnitState>().curhp;
+                int maxHp = unit.curHP;
+                int curHp = unit.HP;
 
 
                 if (curHp / maxHp * 100.0 > 30)//체력 30% 이상.
                 {
-                    dirUnits.Add(unit);
+                    dirUnits.Add(units);
                 }
 
             }
@@ -104,19 +109,22 @@ public class AiManager : MonoBehaviour
     {
         attChace--;
         int maxAtt = 0;
-        GameObject dicAtt = units[0];
-        foreach(GameObject attUnit in dirUnits)//여기서 공격순으로 정렬
+        GameObject dicAtt = StartUnits[0];
+        UnitBase unit;
+        foreach (GameObject attUnit in dirUnits)//여기서 공격순으로 정렬
         {
-            if(maxAtt < attUnit.gameObject.GetComponent<UnitState>().att)
+           unit = attUnit.GetComponent<Unit>().GetUnit();
+            if (maxAtt < unit.curAD)
             {
                 
-                maxAtt = attUnit.GetComponent<UnitState>().att;
+                maxAtt = unit.curAD;
                 dicAtt = attUnit;               
                 
             }           
             
         }
-        Debug.Log("공격선택 : " + dicAtt.GetComponent<UnitState>().unitName);
+        unit = dicAtt.GetComponent<Unit>().GetUnit();
+        Debug.Log("공격선택 : " + unit.Name);
         Units.Remove(dicAtt);
         dirUnits.Clear();
 
@@ -127,20 +135,23 @@ public class AiManager : MonoBehaviour
     {
         defChace--;
         int maxDef = 0;
-        GameObject dicAtt = units[0];
+        GameObject dicDef = StartUnits[0];
+        UnitBase unit;
         foreach (GameObject defUnit in dirUnits)//여기서 공격순으로 정렬
         {
-            if (maxDef < defUnit.gameObject.GetComponent<UnitState>().def)
+            unit = defUnit.GetComponent<Unit>().GetUnit();
+            if (maxDef < unit.curDF)
             {
 
-                maxDef = defUnit.GetComponent<UnitState>().def;
-                dicAtt = defUnit;
+                maxDef = unit.curDF;
+                dicDef = defUnit;
 
             }
 
         }
-        Debug.Log("방어선택 : " + dicAtt.GetComponent<UnitState>().unitName);
-        Units.Remove(dicAtt);
+        unit = dicDef.GetComponent<Unit>().GetUnit();
+        Debug.Log("방어선택 : " + unit.Name);
+        Units.Remove(dicDef);
         dirUnits.Clear();
 
         EnemyAi();
@@ -148,7 +159,8 @@ public class AiManager : MonoBehaviour
     void moveDis()
     {
         moveChace--;
-        Debug.Log("이동선택 : " + Units[0].GetComponent<UnitState>().unitName);
+        UnitBase unit = Units[0].GetComponent<Unit>().GetUnit();
+        Debug.Log("이동선택 : " + unit.Name);
         Units.Remove(Units[0]);
         EnemyAi();
 

@@ -5,12 +5,12 @@ using System.Linq;
    
 public class BaechiAi : MonoBehaviour
 {
-
+ /*
     public GameObject[] proUnits;
     public GameObject[] behUnits;
 
-    public List<GameObject> prontUnits = new List<GameObject>();
-    public List<GameObject> behindUnits = new List<GameObject>();
+    public List<GameObject> frontUnits = new List<GameObject>();
+    public List<GameObject> backUnits = new List<GameObject>();
     int dir1 = 0;
 
 
@@ -23,24 +23,24 @@ public class BaechiAi : MonoBehaviour
     {
         foreach(GameObject unit in proUnits)
         {
-            prontUnits.Add(unit);
+            frontUnits.Add(unit);
         }
         foreach (GameObject unit in behUnits)
         {
-            behindUnits.Add(unit);
+            backUnits.Add(unit);
         }
-        EnemyBaeAi();
+        ArrangeAi();
     }
 
-    void EnemyBaeAi()
+    void ArrangeAi()
     {
         
 
-        if(prontUnits.Any())
+        if(frontUnits.Any())
         {
-            prontBaechi();
+            frontBaechi();
         }
-        if (behindUnits.Any())
+        if (backUnits.Any())
         {
             behindBaechi();
         }
@@ -52,10 +52,10 @@ public class BaechiAi : MonoBehaviour
 
     }
 
-    void prontBaechi()
+    void frontBaechi()
     {
 
-        foreach(GameObject unit in prontUnits)
+        foreach(GameObject unit in frontUnits)
         {
             dir1 = Random.Range(0, 2);
             if(dir1 == 0)
@@ -87,12 +87,12 @@ public class BaechiAi : MonoBehaviour
             }
 
         }
-        prontUnits.Clear();
-        EnemyBaeAi();
+        frontUnits.Clear();
+        ArrangeAi();
     }
     void behindBaechi()
     {
-        foreach (GameObject unit in behindUnits)
+        foreach (GameObject unit in backUnits)
         {
             dir1 = Random.Range(0, 2);
             if (dir1 == 0)
@@ -122,10 +122,10 @@ public class BaechiAi : MonoBehaviour
                     Debug.Log("유닛: " + unit.GetComponent<UnitState>().name + "B4에 배치한다.");
                 
                 }
-                prontUnits.Clear();
+                frontUnits.Clear();
             }
         }
     }
 
-
+    */
 }
